@@ -1,0 +1,55 @@
+<!-- 使用 is 属性，声明需要的使用的模板，然后将模板所需要的 data 传入 -->
+<!-- import 有作用域的概念，即只会 import 目标文件中定义的 template，而不会 import 目标文件 import 的 template。 -->
+<import src="../model/model"/>
+<template is="header" data="{{msg}}"></template>
+<view>====================================</view>
+<include src="../model/model"/>
+<view>====================================</view>
+<block wx:for="{{[1, 2, 3, 4, 5]}}">
+  <template is="{{item % 2 == 0 ? 'even' : 'odd'}}"/>
+</block>
+
+<view>
+  <text>template</text>
+</view>
+<view>
+  <text id='item-{{did}}'>{{msg}}</text>
+</view>
+<view wx:if="{{flag}}">
+  <text>{{msg}}----true显示</text>
+</view>
+
+<checkbox checked="{{flag}}">aa</checkbox>
+
+<view hidden="{{flag ? false : true}}">hidden</view>
+
+<view>{{"hello"+msg}}</view>
+<view>hello{{msg}}</view>
+<view wx:for="{{[did,5,7,8]}}" wx:key="key" >{{item}}</view>
+<!-- Now you can provide attr "wx:key" for a "wx:for" to improve performance 是一个关于性能优化方面的提示.不处理不影响程序运行。在wx:for后面添加wx:key="key" 可消除警告。 -->
+<view wx:for="{{list}}" wx:key="key" >{{index}}:{{item.id}}-{{item.name}}</view>
+<view wx:for="{{list}}" wx:key="key"  wx:for-index="idx" wx:for-item="itemname">{{idx}}:{{itemname.id}}-{{itemname.name}}</view>
+
+<view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:key="key" wx:for-item="i">
+  <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:key="key" wx:for-item="j">
+    <view wx:if="{{i <= j}}">
+      {{i}} * {{j}} = {{i * j}}
+    </view>
+  </view>
+</view>
+<block wx:for="{{list}}" wx:key="key">
+  <view> {{index}}:{{item.name}} </view>
+</block>
+
+<view wx:if="{{length > 5}}"> 1 </view>
+<view wx:elif="{{length > 2}}"> 2 </view>
+<view wx:else> 3 </view>
+<!-- <block/> 并不是一个组件，它仅仅是一个包装元素，不会在页面中做任何渲染，只接受控制属性 -->
+<!-- 因为 wx:if 是一个控制属性，需要将它添加到一个标签上。如果要一次性判断多个组件标签，可以使用一个 <block/> 标签将多个组件包装起来，并在上边使用 wx:if 控制属性 -->
+<block wx:if="{{true}}">
+  <view> view1 </view>
+  <view> view2 </view>
+</block>
+
+
+

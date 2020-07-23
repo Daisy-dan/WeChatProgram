@@ -1,0 +1,6 @@
+<!--pages/modelb/modelb.wxml-->
+<template name="modelb">
+  <view>
+    modelb、modelb、modelb、modelb
+  </view>
+</template>

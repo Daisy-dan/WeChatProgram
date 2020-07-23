@@ -1,0 +1,33 @@
+<!-- WXML提供模板（template），可以在模板中定义代码片段，然后在不同的地方调用 -->
+<!-- 使用 name 属性，作为模板的名字。然后在<template/>内定义代码片段 -->
+<template name="header">
+  <view>
+    头部模块{{msg}}
+  </view>
+</template>
+
+
+<template name="odd">
+  <view> odd </view>
+</template>
+<template name="even">
+  <view> even </view>
+</template>
+
+<import src="../modelb/modelb"/>
+<template is="modelb"></template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
